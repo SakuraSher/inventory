@@ -1,26 +1,27 @@
 package main
 
 import (
+	inventory "inventory/InventoryService"
 	"log"
 
 	"github.com/labstack/echo"
 	"gorm.io/driver/postgres"
-	"gorm.io/gor
+	"gorm.io/gorm"
 )
 
 func main() {
-	config := LoadConfig()
+	config := inventory.LoadConfig()
 	db, err := gorm.Open(postgres.Open(config.DBConnectionString), &gorm.Config{})
 
 	if err != nil {
 		log.Fatalf("Failed to connect to the datbase %v", err)
 	}
 
-	db.AutoMigrate(&Item{})
+	db.AutoMigrate(&inventory.Item{})
 
-	repo := NewInventoryRepository(db)
-	service := newInventoryService(repo)
-	handlers := NewInventoryHandlers(service)
+	repo := inventory.NewInventoryRepository(db)
+	service := inventory.newInventoryService(repo)
+	handlers := inventory.NewInventoryHandlers(service)
 
 	e := echo.New()
 

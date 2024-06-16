@@ -1,4 +1,4 @@
-package main
+package inventory
 
 type InventoryService struct {
 	repo *InventoryRepository

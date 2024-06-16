@@ -1,4 +1,4 @@
-package main
+package inventory
 
 const DB_CONNECTIONSTRING = "postgresql://postgres:1234qwer@localhost:5432/inventory"
 const DB_SERVERPORT = "8080"

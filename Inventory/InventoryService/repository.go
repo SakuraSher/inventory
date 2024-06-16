@@ -1,5 +1,5 @@
 // database interaction logic
-package main
+package inventory
 
 import (
 	"gorm.io/gorm"
