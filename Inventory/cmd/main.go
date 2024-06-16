@@ -20,7 +20,7 @@ func main() {
 	db.AutoMigrate(&inventory.Item{})
 
 	repo := inventory.NewInventoryRepository(db)
-	service := inventory.newInventoryService(repo)
+	service := inventory.NewInventoryService(repo)
 	handlers := inventory.NewInventoryHandlers(service)
 
 	e := echo.New()
